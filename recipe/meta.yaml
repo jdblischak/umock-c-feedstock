@@ -10,16 +10,17 @@ source:
     sha256: 8be1cbfa2259ca1140d186154d2561d1ed76ab0b5ce4efef1db1371fd3d92343
 
 build:
-  number: 0
-  skip: true  # [not win64]
+  number: 1
   run_exports:
     - {{ pin_subpackage(name, exact=True) }}
 
 requirements:
   build:
-    - vs2017_win-64          # [win64]
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
     - cmake
-    - ninja
+    - make   # [not win]
+    - ninja  # [win]
   host:
     - azure-macro-utils-c
   run:
@@ -28,10 +29,12 @@ requirements:
 test:
   commands:
     - if not exist %PREFIX%\\Library\\include\\umock_c\\umock_c.h exit 1  # [win]
+    - test -f "${PREFIX}/include/umock_c/umock_c.h"  # [not win]
 
 about:
   home: https://github.com/Azure/umock-c
   license: MIT
+  license_family: MIT
   license_file: LICENSE
   summary: |
     A pure C mocking library
@@ -40,3 +43,4 @@ extra:
   recipe-maintainers:
     - xylar
     - seanyen
+    - xylar
