@@ -1,16 +1,16 @@
 {% set name = "umock-c" %}
-{% set version = "2020.03.27" %}
+{% set version = "2022.08.10" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  - url: https://github.com/Azure/umock-c/archive/1f0e52e3f54bdeeb138d400ea11701a1f7dc5e5c.zip
-    sha256: 8be1cbfa2259ca1140d186154d2561d1ed76ab0b5ce4efef1db1371fd3d92343
+  - url: https://github.com/Azure/umock-c/archive/b53d51c16355c669b21777c242e5d9de529ec5c7.zip
+    sha256: 314ec63d917ba76ad8366313ffde0a1374a7bcaaf375a065822f10314406296e
 
 build:
-  number: 1
+  number: 0
   run_exports:
     - {{ pin_subpackage(name, exact='x.x.x') }}
 
@@ -22,9 +22,9 @@ requirements:
     - make   # [not win]
     - ninja  # [win]
   host:
-    - azure-macro-utils-c <2020.10.29
+    - azure-macro-utils-c >=2020.10.29
   run:
-    - azure-macro-utils-c <2020.10.29
+    - azure-macro-utils-c >=2020.10.29
 
 test:
   commands:
