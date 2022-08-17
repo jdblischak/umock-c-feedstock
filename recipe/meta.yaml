@@ -12,7 +12,7 @@ source:
 build:
   number: 1
   run_exports:
-    - {{ pin_subpackage(name, exact=True) }}
+    - {{ pin_subpackage(name, exact='x.x.x') }}
 
 requirements:
   build:
