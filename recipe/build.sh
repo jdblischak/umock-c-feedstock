@@ -5,11 +5,12 @@ mkdir -p build
 cd build
 
 cmake \
-    -DCMAKE_INSTALL_PREFIX=${PREFIX} \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_SYSTEM_RUNTIME_LIBS_SKIP=True \
-    -DBUILD_SHARED_LIBS=ON \
-    -Duse_installed_dependencies=ON \
+    -D CMAKE_INSTALL_PREFIX=${PREFIX} \
+    -D CMAKE_PREFIX_PATH=${PREFIX} \
+    -D CMAKE_BUILD_TYPE=Release \
+    -D CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS_SKIP=True \
+    -D BUILD_SHARED_LIBS=ON \
+    -D use_installed_dependencies=ON \
     ${SRC_DIR}
 
 make -j$CPU_COUNT

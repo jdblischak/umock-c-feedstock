@@ -22,9 +22,9 @@ requirements:
     - make   # [not win]
     - ninja  # [win]
   host:
-    - azure-macro-utils-c
+    - azure-macro-utils-c <2020.10.29
   run:
-    - azure-macro-utils-c
+    - azure-macro-utils-c <2020.10.29
 
 test:
   commands:
