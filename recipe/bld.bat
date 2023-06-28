@@ -2,7 +2,8 @@
 
 cmake -S . -B build ^
   -G "Ninja" ^
-  -D use_installed_dependencies=ON
+  -D use_installed_dependencies=ON ^
+  %CMAKE_ARGS%
 if errorlevel 1 exit 1
 
 type build/CMakeCache.txt
