@@ -1,13 +1,9 @@
 #!/usr/bin/env bash
-set -e
+set -eux
 
-cd build
+cmake -S . -B build \
+  -D use_installed_dependencies=ON
 
-cmake \
-    -D CMAKE_INSTALL_PREFIX=${PREFIX} \
-    -D CMAKE_PREFIX_PATH=${PREFIX} \
-    -D use_installed_dependencies=ON \
-    ..
+grep PREFIX build/CMakeCache.txt
 
-make -j$CPU_COUNT
-make install
+cmake --build build -j$CPU_COUNT --target install
