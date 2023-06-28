@@ -1,16 +1,10 @@
 @echo on
 
-echo CONDA_BUILD=%CONDA_BUILD%
-echo CMAKE_ARGS=%CMAKE_ARGS%
-echo CMAKE_PREFIX_PATH=%CMAKE_PREFIX_PATH%
-
-cmake -S . -B build ^
+cmake -S . -B build %CMAKE_ARGS% ^
   -G "Ninja" ^
-  -D use_installed_dependencies=ON ^
-  %CMAKE_ARGS%
+  -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
+  -D use_installed_dependencies=ON
 if errorlevel 1 exit 1
-
-type build\CMakeCache.txt
 
 cmake --build build --target install
 if errorlevel 1 exit 1
