@@ -30,6 +30,10 @@ test:
   commands:
     - if not exist %PREFIX%\\Library\\include\\umock_c\\umock_c.h exit 1  # [win]
     - test -f "${PREFIX}/include/umock_c/umock_c.h"  # [not win]
+    - test -f "${PREFIX}/lib/libumock_c.so"  # [linux]
+    - ldd "${PREFIX}/lib/libumock_c.so"  # [linux]
+    - test -f "${PREFIX}/lib/libumock_c.dylib"  # [osx]
+    - otool -L ${PREFIX}/lib/libumock_c.dylib  # [osx]
 
 about:
   home: https://github.com/Azure/umock-c
