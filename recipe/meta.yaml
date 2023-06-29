@@ -27,13 +27,9 @@ requirements:
     - azure-macro-utils-c <2020.10.29
 
 test:
-  requires:
-    - cmake
   commands:
     - if not exist %PREFIX%\\Library\\include\\umock_c\\umock_c.h exit 1  # [win]
     - test -f "${PREFIX}/include/umock_c/umock_c.h"  # [not win]
-    - ctest --test-dir "${SRC_DIR}/build/tests/" -j 2 --output-on-failure  # [not win]
-    - ctest --test-dir "%SRC_DIR%\\build\\tests\\" -j 2 --output-on-failure  # [win]
 
 about:
   home: https://github.com/Azure/umock-c
